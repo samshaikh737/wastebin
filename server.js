@@ -9,7 +9,9 @@ app.use(express.urlencoded({ extended: true }));
 //db
 const mongoose = require("mongoose");
 mongoose
-  .connect("mongodb://localhost/wastebin", {})
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser : true
+  })
   .then(() => {
     console.log("DB is connected");
   })
